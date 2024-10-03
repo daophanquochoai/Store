@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: Monotholic_BE
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: hoai23828@gmail.com
+    password: zbzl thfu tmre nkvv
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mono_micro
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: Ov23li63jAWvrECNvPOJ
+            clientSecret: fb42db9c56682e847291b54a613fe0ff8a63aeb0
+            scope: read:user, user:email
+            redirect-uri: "{baseUrl}/login/oauth2/code/github"
+          facebook:
+            client-id: 794908695860392
+            client-secret: dfa893f13ba68db653d486058d20de74
+application:
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
+    oauth2:
+      redirectUri: http://localhost:5173/oauth2/redirect
+    cors:
+      allowed-origins: http://localhost:5173
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+server:
+  port: 8080
